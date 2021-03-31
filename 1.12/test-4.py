@@ -2,19 +2,32 @@
 #   Bioinformatics Institute
 #   python programming course solutions
 #   Task 1.12.4
-#   calculate triangle's area by Heron's formula
+#   написать программу, на вход которой подаётся тип фигуры комнаты
+#   и соответствующие параметры, которая бы выводила площадь получившейся комнаты
 #   Copyright (c) 2021. Danil Smirnov
 #   Released under GNU Public License (GPL)
 #   email zabanen.nu@ya.ru
 #   -----------------------------------------------------------
 
 
-def get_triangle_area(a: int, b: int, c: int):
-    """ calculates the area of triangle using Heron's formula by the sides a, b, c"""
+def calculateCircleArea(radius):
+    return 3.14 * (radius ** 2)
+
+def calculateRectangleArea(a, b):
+    return a * b
+
+def calculateTriangleArea(a, b, c):
     semi_perimeter = (a + b + c) / 2
-    triangle_area = (semi_perimeter * (semi_perimeter - a) * (semi_perimeter - b) * (semi_perimeter - c)) ** 0.5
-    return triangle_area
+    return (semi_perimeter * (semi_perimeter - a) * (semi_perimeter - b) * (semi_perimeter - c)) ** 0.5
+
+RoomType = input()
+
+if RoomType == 'круг':
+    print(calculateCircleArea(float(input())))
+elif RoomType == 'прямоугольник':
+    print(calculateRectangleArea(float(input()), float(input())))
+elif RoomType == 'треугольник':
+    print(calculateTriangleArea(float(input()), float(input()), float(input())))
 
 
-print(get_triangle_area(
-    int(input()), int(input()), int(input())))
+
